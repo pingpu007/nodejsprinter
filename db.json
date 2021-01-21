@@ -1,7 +1,14 @@
 [
   {
     "id": "1",
-    "name": "Game of thrones"
+    "name": "Game of thrones",
+    "invoice" : "00001",
+    "tstatus" : "T/A1",
+    "sname"   : "Nattawat Jantarasombat",
+    "gtotal"  : "3",
+    "econtID" : "ECONT",
+    "date"    : "21/01/64",
+    "time"    : "12:52"
   },
   {
     "id": "2",
