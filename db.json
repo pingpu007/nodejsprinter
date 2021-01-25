@@ -8,7 +8,10 @@
     "gtotal"  : "3",
     "econtID" : "ECONT",
     "date"    : "21/01/64",
-    "time"    : "12:52"
+    "time"    : "12:52",
+    "menutotal" : ["2","3","25","2","5","8","9"],
+    "menu" : ["fried rice" , "som tum" , "omelette","aden","roseenee","yahoo","hello"],
+    "menucost" : ["40" , "40" , "20" , "50" , "180" , "20" , "1500"]
   },
   {
     "id": "2",

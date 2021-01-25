@@ -21,8 +21,8 @@ device.open(function(error){
   .align('ct')
   .style('b')
   .size(0.5, 0.55)
-  .text('Play-G-LAO')
-  .feed()
+//  .text('Play-G-LAO')
+/*  .feed()
   .style('normal')
   .size(0.01, 0.015)
   .text('70/12')
@@ -41,10 +41,12 @@ device.open(function(error){
   .text('Staff : ')
   .text('Guest : 1                      ID : ECONT')
   .text('Date : 20/01/64                Time: 16:55')
-  .text('-----------------------------------------')
+  .text('-----------------------------------------')*/
+  
+  
  // .barcode('1234567', 'EAN8')
  // .table(["One", "Two", "Three"])
-/*  .tableCustom(
+  .tableCustom(
     [
       { text:"Left", align:"LEFT", width:0.33, style: 'B' },
       { text:"Center", align:"CENTER", width:0.33},
@@ -52,7 +54,7 @@ device.open(function(error){
 
     ],
     { encoding: 'cp857', size: [1, 1] } // Optional
-  )*/
+  )
   .feed()
   .cut()
   .close()
