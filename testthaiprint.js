@@ -43,7 +43,7 @@ device.open(function(error) {
   .font('a')
   .align("rt")
   .size(1, 1)
-  .text('Datability Co., Ltd')
+  .text('กกกกุ')
   .font('a')
   .tableCustom(
               [

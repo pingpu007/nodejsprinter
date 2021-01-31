@@ -6,12 +6,14 @@ console.log("STEP #2")
 escpos.USB = require('escpos-usb');
 console.log("STEP #3")
 
+
 const device  = new escpos.USB();
 // const device  = new escpos.Network('localhost');
 // const device  = new escpos.Serial('/dev/usb/lp0');
 
 const options = { encoding: "GB18030" /* default */ }
 // encoding is optional
+
 
 const printer = new escpos.Printer(device, options);
 
@@ -45,8 +47,12 @@ device.open(function(error){
   
   
  // .barcode('1234567', 'EAN8')
- // .table(["One", "Two", "Three"])
-  .tableCustom(
+  .encode('tis-620')
+  .table(["2", "ข้าวผัด", "40"])
+  .table(["2", "ส้มตำ", "40"])
+  .table(["2", "ไข่เจียว", "20"])
+  .encode('GB18030')
+  /*.tableCustom(
     [
       { text:"Left", align:"LEFT", width:0.33, style: 'B' },
       { text:"Center", align:"CENTER", width:0.33},
@@ -54,7 +60,7 @@ device.open(function(error){
 
     ],
     { encoding: 'cp857', size: [1, 1] } // Optional
-  )
+  )*/
   .feed()
   .cut()
   .close()
