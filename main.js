@@ -23,7 +23,6 @@ app.get('/bills', (req, res) => {
 app.post('/invoice', (req, res) => {
   var data = req.body;
   //console.log(data);
-  var dataID = data["id"];
   var datashopname = data["shopname"]
   var dataaddressnum = data["addressnumber"]
   var datatel = data["tel"]
@@ -33,7 +32,6 @@ app.post('/invoice', (req, res) => {
   var dataTstatus = data["tstatus"];
   var dataSname = data["sname"];
   var dataG = data["gtotal"];
-  var dataEcID = data["econtID"];
   var dataDate = data["date"];
   var dataTime = data["time"];
   var datamenu = data["menu"];
@@ -54,7 +52,7 @@ app.post('/invoice', (req, res) => {
         .style('normal')
         .size(0.01, 0.015)
         .text(dataaddressnum)
-        .text('Tel : '+ datatel)
+        .text(datatel)
         .feed()
         .style('b')
         .size(0.5, 0.55)
@@ -65,11 +63,11 @@ app.post('/invoice', (req, res) => {
         .text('----------------------------------------')
           //First API insert
         .align('lt')
-        .text('    '+ 'INV.NO: '+ dataInv+ '  ')
-        .text('    '+'Table : '+ dataTstatus+ '  ')
-        .text('    '+'Staff : '+ dataSname+ '  ')
-        .text('    '+'Guest :  '+ dataG+'                   '+ 'ID : '+ dataEcID+ '  ')
-        .text('    '+'Date : '+ dataDate+'              '+ 'Time: '+ dataTime+ '  ')
+        .text('    '+ dataInv+ '  ')
+        .text('    '+ dataTstatus+ '  ')
+        .text('    '+ dataSname+ '  ')
+        .text('    '+ dataG+ '                   ')
+        .text('    '+ dataDate+'              '+ dataTime+ '  ')
         .align('ct')
         .text('----------------------------------------')
         .align('lt')
@@ -179,7 +177,7 @@ app.post('/invoice', (req, res) => {
         .align('ct')
         .text('----------------------------------------')
         .text('Thank you')
-        //.feed()
+        .feed()
         .close()
     });
   },200 * i);
@@ -218,18 +216,18 @@ app.post('/order', (req, res) => {
             .font('a')
             .align('lt')
             .size(0.5, 0.55)
-            .text("Staff Name :"+ dataSname)
-            .text("Time :"+ dataDate+ " "+ dataTime)
+            .text(dataSname)
+            .text(dataDate+ " "+ dataTime)
             .feed()
             .size(1,1.2)
-            .text("Table :"+ dataTstatus)
+            .text(dataTstatus)
             .size(0.5, 0.55)
             .text('-----------------------------------------')
             .size(1,1.2)
             .tableCustom(
               [
                 { text:"  "+ datamenunum+ "x", align:"LEFT", width:0.1 },        //First Col of listing menu
-                { text:"  "+ datamenuname, align:"LEFT", width:0.5  },   //Second Col of listing menu + space of special ThaiWord by Donut
+                { text:"  "+ datamenuname, align:"LEFT", width:0.5  },           //Second Col of listing menu + space of special ThaiWord by Donut
               ])
             .size(0.5, 0.55)
             .text('-----------------------------------------')
@@ -258,7 +256,7 @@ app.post('/bills', (req, res) => {
   var dataTstatus = data["tstatus"];
   var dataSname = data["sname"];
   var dataG = data["gtotal"];
-  var dataEcID = data["econtID"];
+  var dataBillID = data["billID"];
   var dataDate = data["date"];
   var dataTime = data["time"];
   var datamenu = data["menu"];
@@ -274,12 +272,13 @@ app.post('/bills', (req, res) => {
         .align('ct')
         .style('b')
         .size(0.5, 0.55)
+        //First API insert
         .text(datashopname)
         .feed()
         .style('normal')
         .size(0.01, 0.015)
         .text(dataaddressnum)
-        .text('Tel : '+ datatel)
+        .text(datatel)
         .feed()
         .style('b')
         .size(0.5, 0.55)
@@ -288,13 +287,12 @@ app.post('/bills', (req, res) => {
         .size(0.01, 0.05)
         .text(datalinedetail)
         .text('----------------------------------------')
-          //First API insert
         .align('lt')
-        .text('    '+ 'INV.NO: '+ dataInv+ '  ')
-        .text('    '+'Table : '+ dataTstatus+ '  ')
-        .text('    '+'Staff : '+ dataSname+ '  ')
-        .text('    '+'Guest :  '+ dataG+'                   '+ 'ID : '+ dataEcID+ '  ')
-        .text('    '+'Date : '+ dataDate+'              '+ 'Time: '+ dataTime+ '  ')
+        .text('    '+ dataInv+ '  ')
+        .text('    '+ dataTstatus+ '  ')
+        .text('    '+ dataSname+ '  ')
+        .text('    '+ dataG+'                   '+ dataBillID+ '  ')
+        .text('    '+ dataDate+'              '+ dataTime+ '  ')
         .align('ct')
         .text('----------------------------------------')
         .align('lt')

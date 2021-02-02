@@ -61,7 +61,6 @@
     "tstatus" : "T/A1",
     "sname"   : "ณรรฐวรรต จันทรสมบัติ",
     "gtotal"  : "3",
-    "econtID" : "ECONT",
     "date"    : "21/01/64",
     "time"    : "12:52",
     "menu" : ["ข้าวผัด"],
@@ -80,7 +79,6 @@
     "menucost" : [40]
   },
   {
-    "id": "1",
     "shopname" : "เพ-กะ-ลาว",
     "addressnumber" : "70/12",
     "tel" : "0659983229",
@@ -90,7 +88,7 @@
     "tstatus" : "T/A1",
     "sname"   : "ณรรฐวรรต จันทรสมบัติ",
     "gtotal"  : "3",
-    "econtID" : "ECONT",
+    "billID" : "XYNKS",
     "date"    : "21/01/64",
     "time"    : "12:52",
     "menu" : [" ข้าวผัด "],
