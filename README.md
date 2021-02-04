@@ -1,5 +1,5 @@
 ## ESCPOS PROJECT
-ESC/POS Printer driver for Node.js
+ESC/POS Printer driver for Node.js (Thai printing)
 
 ## Installation
 
@@ -14,7 +14,7 @@ ESC/POS Printer driver for Node.js
 ```
 ### git
 ```bash
-$ git clone https://github.com/pingpu007/donut_git
+$ git clone https://github.com/pingpu007/nodeescpos
 ```
 
 ### Linux/Ubuntu

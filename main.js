@@ -37,8 +37,17 @@ app.post('/invoice', (req, res) => {
   var datamenu = data["menu"];
   var datamenutotal = data["menutotal"]
   var datamenucost = data["menucost"]
+  var datadiscounttext = data["discounttext"]
   var datadiscount = data["discount"]
 
+  // Regex : Generic Pattern Counter
+  const countSpecialThaiWord = (str) => {
+    // ะ, ิ
+    const re = /[ะิีึืุู่้๊๋ั]/g
+      return ((str || '').match(re) || []).length
+  }
+
+      setTimeout(() => {
       //Title of the Paper 
     device.open(function(error){
       printer
@@ -72,14 +81,8 @@ app.post('/invoice', (req, res) => {
         .text('----------------------------------------')
         .align('lt')
         .close()
-    });
+    });}, 200 * datamenu.length);
 
-  // Regex : Generic Pattern Counter
-  const countSpecialThaiWord = (str) => {
-    // ะ, ิ
-    const re = /[ะิีึืุู่้๊๋ั]/g
-      return ((str || '').match(re) || []).length
-  }
 
   //loop listing menu and discount
   for (var i=0; i < datamenu.length; i++) {
@@ -111,13 +114,13 @@ app.post('/invoice', (req, res) => {
             .tableCustom(
               [
                 { text:"    ", align:"LEFT", width:0.275 },                                       //First Col of listing Discount
-                { text: "#Discount "+datadiscount[j]+"%", align:"LEFT", width:0.63 },             //Second Col of listing Discount
+                { text: datadiscounttext[j]+ " "+ datadiscount[j]+"%", align:"LEFT", width:0.63 },             //Second Col of listing Discount
                 { text:"-"+ tld, align:"RIGHT", width:0.16}                                       //Third Col of listing Discount
               ])
             //.feed()
             .close()
         });
-      }, 200 * ind);
+      }, 200 * datamenu.length);
     })(i);
   }
 
@@ -180,7 +183,7 @@ app.post('/invoice', (req, res) => {
         .feed()
         .close()
     });
-  },200 * i);
+  },200 * datamenu.length);
 
   setTimeout(() => {
     device.open(function(error){
@@ -189,7 +192,7 @@ app.post('/invoice', (req, res) => {
         .cut()
         .close()
     });
-  }, 200 * i); 
+  }, 200 * datamenu.length); 
 
   res.status(201).json(req.body)
 })
@@ -236,9 +239,10 @@ app.post('/order', (req, res) => {
             //.feed()
             .close()
         });
-      }, 200 * ind);
+      }, 200 * datamenu.length);
       })(i);
     }
+    console.log("succeed")
 
   res.status(201).json(req.body)
 })
@@ -263,7 +267,11 @@ app.post('/bills', (req, res) => {
   var datamenutotal = data["menutotal"]
   var datamenucost = data["menucost"]
   var datacash = data ["cash"]
+  var datadiscounttext = data["discounttext"]
   var datadiscount = data["discount"]
+
+
+    setTimeout(() => {
       //Title of the Paper 
     device.open(function(error){
       printer
@@ -297,7 +305,7 @@ app.post('/bills', (req, res) => {
         .text('----------------------------------------')
         .align('lt')
         .close()
-    });
+    });}, 200 * datamenu.length);
   // Regex : Generic Pattern Counter
   const countSpecialThaiWord = (str) => {
     // ะ, ิ
@@ -334,13 +342,13 @@ app.post('/bills', (req, res) => {
             .tableCustom(
               [
                 { text:"    ", align:"LEFT", width:0.275 },                                       //First Col of listing Discount
-                { text: "#Discount "+datadiscount[j]+"%", align:"LEFT", width:0.63 },             //Second Col of listing Discount
+                { text: datadiscounttext[j]+ " "+ datadiscount[j]+"%", align:"LEFT", width:0.63 },             //Second Col of listing Discount
                 { text:"-"+ tld, align:"RIGHT", width:0.16}                                       //Third Col of listing Discount
               ])
             //.feed()
             .close()
         });
-      }, 200 * ind);
+      }, 200 * datamenu.length);
     })(i);
   }
   //Operation of the end of printing
@@ -419,7 +427,7 @@ app.post('/bills', (req, res) => {
         .feed()
         .close()
     });
-  },200 * i);
+  },200 * datamenu.length);
   setTimeout(() => {
     device.open(function(error){
       printer
@@ -427,7 +435,7 @@ app.post('/bills', (req, res) => {
         .cut()
         .close()
     });
-  }, 200 * i); 
+  }, 200 * datamenu.length); 
 
   res.status(201).json(req.body)
 })
