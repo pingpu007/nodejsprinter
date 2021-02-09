@@ -46,6 +46,37 @@
     "discounttext" : ["#Discount","#Discount","#Discount","#Discount"],
     "discount" : [30,30,30,30],
     "cash" : 200
-  }
+  },
+  {
+    "shopname" : "ห้างหุ้นส่วนจำกัด ศศิญา (6633)",
+    "address" : "สำนักงานใหญ่ 86/1 ถนนรามคำแหง แขวงสะพานสูง",
+    "address2" : "เขตสะพานสูง กทม10240",
+    "taxid"   : "เลขประจำตัวผู้เสียภาษี0103562011252",
+    "address3"    : ", สะพานสูง, กรุงเทพมหานคร",
+    "tel"    : "โทรศัพท์:0949759689",
+    "typeofpaper" : "บิล",
+    "typeoftable" : "ทานที่ร้าน",
+    "tablenum" : "โต๊ะ 4",
+    "staffnametitle" : "ชื่อพนักงาน",
+    "staffname" : "ป้าปุ๊",
+    "timearrivaltitle" : "เวลาที่เข้า",
+    "datearrival" : "30-01-2564",
+    "timearrival" : "18:34",
+    "timeprintingtitle" : "เวลาที่พิมพ์",
+    "dateprinting" : "30-01-2564",
+    "timeprinting" : "19:12",
+    "itemtitle" : "สินค้า",
+    "quantitytitle" : "Qty",
+    "totalcosttitle" : "ราคารวม",
+    "menu" : ["ปีกไก่ทอดสมุนไพร(ราคาปกติ)","ตำถาดป้าปุ๊ ZaAp(ราคา)","ขนมจีน","ข้าวเหนียว","น้ำดื่ม","น้ำแข็งแก้ว"],
+    "menutotal" : [1,1,2,1,1,2],
+    "menucost" : [140,110,20,15,12,4],
+    "totaltitle" : "ยอดรวม",
+    "alltotal" : "ทั้งหมด",
+    "thankyoutitle" : "ขอบคุณที่มาอุดหนุน",
+    "contacttitle" : "โทรสั่ง",
+    "contactnumber" : "0616696839 0949150971",
+    "creditcreating" : "Powered by Ping"
+}
 
 ]
