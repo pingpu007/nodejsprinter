@@ -72,11 +72,15 @@ app.post('/invoice', (req, res) => {
         .text('----------------------------------------')
           //First API insert
         .align('lt')
-        .text('    '+ dataInv+ '  ')
+        .text('    '+ dataInv)
         .text('    '+ dataTstatus+ '  ')
         .text('    '+ dataSname+ '  ')
         .text('    '+ dataG+ '                   ')
-        .text('    '+ dataDate+'              '+ dataTime+ '  ')
+        .tableCustom(
+          [
+          {text:"    "+ dataDate, width:0.8},
+          {text:dataTime, width:0.38}
+          ])
         .align('ct')
         .text('----------------------------------------')
         .align('lt')
@@ -292,15 +296,23 @@ app.post('/bills', (req, res) => {
         .size(0.5, 0.55)
         .text(datatypeofpaper)
         .style('normal')
-        .size(0.01, 0.05)
+        .size(0.01, 0.015)
         .text(datalinedetail)
         .text('----------------------------------------')
         .align('lt')
         .text('    '+ dataInv+ '  ')
         .text('    '+ dataTstatus+ '  ')
         .text('    '+ dataSname+ '  ')
-        .text('    '+ dataG+'                   '+ dataBillID+ '  ')
-        .text('    '+ dataDate+'              '+ dataTime+ '  ')
+        .tableCustom(
+          [
+          {text:"    "+ dataG, width:0.8},
+          {text:dataBillID, width:0.38}
+          ])
+        .tableCustom(
+          [
+          {text:"    "+ dataDate, width:0.8},
+          {text:dataTime, width:0.38}
+          ])
         .align('ct')
         .text('----------------------------------------')
         .align('lt')
@@ -428,6 +440,7 @@ app.post('/bills', (req, res) => {
         .close()
     });
   },200 * datamenu.length);
+
   setTimeout(() => {
     device.open(function(error){
       printer
@@ -435,7 +448,7 @@ app.post('/bills', (req, res) => {
         .cut()
         .close()
     });
-  }, 200 * datamenu.length); 
+  }, 300 * datamenu.length); 
 
   res.status(201).json(req.body)
 })

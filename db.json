@@ -1,5 +1,5 @@
 [
-  {               //Invoice API
+  {               
     "shopname" : "เพ-กะ-ลาว",
     "addressnumber" : "70/12",
     "tel" : "Tel : 0659983229",
@@ -17,7 +17,7 @@
     "discounttext" : ["#Discount","#Discount","#Discount","#Discount"],
     "discount" : [30,30,30,30]
   },
-  {               //Order API
+  {               
     "shopname" : "เพ-กะ-ลาว",
     "tstatus" : "Table: T/A1",
     "sname"   : "Staff Name: ณรรฐวรรต จันทรสมบัติ",
@@ -26,7 +26,7 @@
     "menu" : [" ข้าวผัด ","ข้าวผัด","ข้าวผัด","ข้าวผัด"],
     "menutotal" : [2,2,2,2]
   },
-  {               //Bills API
+  {               
     "id": "1",
     "shopname" : "เพ-กะ-ลาว",
     "addressnumber" : "70/12",
