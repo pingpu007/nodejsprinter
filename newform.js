@@ -84,7 +84,28 @@ setTimeout(() => {
 device.open(function(error){
   printer
     .encode('tis-620')
-    
+    .font('a')
+    .align('ct')
+    .size(1,1) 
+    .text(datacompanyname)
+/*    .size(1,1.3) 
+    .text(datacompanyname)
+    .size(1,1.4) 
+    .text(datacompanyname)
+    .size(1,1.5) 
+    .text(datacompanyname)
+    .size(1,1.6) 
+    .text(datacompanyname)
+    .size(1,1.7) 
+    .text(datacompanyname)
+    .size(1,1.8) 
+    .text(datacompanyname)
+    .size(1,1.9) 
+    .text(datacompanyname)
+    .size(1,2) 
+    .text(datacompanyname)*/
+    .feed()
+    .cut()
     .close()
   });
   console.log("Ready to use printer >>>>>>>")
