@@ -133,9 +133,12 @@ app.post('/invoice', (req, res) => {
     var  item = datamenutotal.reduce(function(a,b){
       return a+b ;
         }, 0)
-    var  subtotal = datamenucost.reduce(function(a,b){
+    var  subt = []
+    for (var i=0; i < datamenu.length; i++) {
+        subt[i] = datamenutotal[i] * datamenucost[i] 
+        var subtotal = subt.reduce(function(a,b){
       return a+b ;
-        }, 0)
+        }, 0)} 
     var dc = []
     for (var i=0; i < datamenu.length; i++) {
         dc[i] = datamenucost[i] * datadiscount[i] / 100
@@ -368,9 +371,12 @@ app.post('/bills', (req, res) => {
     var  item = datamenutotal.reduce(function(a,b){
       return a+b ;
         }, 0)
-    var  subtotal = datamenucost.reduce(function(a,b){
+    var  subt = []
+    for (var i=0; i < datamenu.length; i++) {
+        subt[i] = datamenutotal[i] * datamenucost[i] 
+        var subtotal = subt.reduce(function(a,b){
       return a+b ;
-        }, 0)
+        }, 0)} 
     var dc = []
     for (var i=0; i < datamenu.length; i++) {
         dc[i] = datamenucost[i] * datadiscount[i] / 100
@@ -515,6 +521,60 @@ setTimeout(() => {
   var cashperperpeople = allcost / datacustomernum
   var cashperpeople = cashperperpeople.toFixed(2);
   var cash = datacash.toFixed(2);
+
+  // Regex : Generic Pattern Counter
+  const countSpecialThaiWord = (str) => {
+    // ะ, ิ
+    const re = /[ะิีึืุู่้๊๋ั]/g
+      return ((str || '').match(re) || []).length
+  }
+
+  // Calculate space of thai language by Donut
+        var _countSpecialThaiWorddatadateandtime = countSpecialThaiWord(datadateandtime)
+        var _countSpecialThaiWorddatamenutitle = countSpecialThaiWord(datamenutitle)
+        var _countSpecialThaiWorddatatotaltitle = countSpecialThaiWord(datatotaltitle)
+        var _countSpecialThaiWorddataalltotal = countSpecialThaiWord(dataalltotal)
+        var _countSpecialThaiWorddatacashtitle = countSpecialThaiWord(datacashtitle)
+        var _countSpecialThaiWorddatacashchangetitle = countSpecialThaiWord(datacashchangetitle)
+        var _countSpecialThaiWorddataaverageperpeopletitle = countSpecialThaiWord(dataaverageperpeopletitle)
+        //console.log("_countSpecialThaiWord", _countSpecialThaiWord)
+        var maxLenOfTableCustom = 42
+        var spaceWidthfordatadateandtime = 0
+        var spaceWidthfordatamenutitle = 0
+        var spaceWidthfordataalltotal = 0
+        var spaceWidthfordatatotaltitle = 0
+        var spaceWidthfordatacashtitle = 0
+        var spaceWidthfordatacashchangetitle = 0
+        var spaceWidthfordataaverageperpeopletitle = 0
+        if (_countSpecialThaiWorddatadateandtime  != 0) {
+         spaceWidthfordatadateandtime = (_countSpecialThaiWorddatadateandtime / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+        if (_countSpecialThaiWorddatamenutitle  != 0) {
+         spaceWidthfordatamenutitle = (_countSpecialThaiWorddatamenutitle / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+        if (_countSpecialThaiWorddatatotaltitle  != 0) {
+         spaceWidthfordatatotaltitle = (_countSpecialThaiWorddatatotaltitle / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+        if (_countSpecialThaiWorddataalltotal  != 0) {
+         spaceWidthfordataalltotal = (_countSpecialThaiWorddataalltotal / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+        if (_countSpecialThaiWorddatacashtitle  != 0) {
+         spaceWidthfordatacashtitle = (_countSpecialThaiWorddatacashtitle / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+        if (_countSpecialThaiWorddatacashchangetitle  != 0) {
+         spaceWidthfordatacashchangetitle = (_countSpecialThaiWorddatacashchangetitle / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+        if (_countSpecialThaiWorddataaverageperpeopletitle  != 0) {
+         spaceWidthfordataaverageperpeopletitle = (_countSpecialThaiWorddataaverageperpeopletitle / maxLenOfTableCustom)
+          //console.log("spaceWidth", spaceWidth)
+        }
+
 device.open(function(error){
   printer
     .encode('tis-620')
@@ -538,17 +598,17 @@ device.open(function(error){
     .tableCustom(
           [
           {text:dataposidtitle,align:"LEFT", width:0.5},
-          {text:dataposid,align:"RIGHT", width:0.5}
+          {text:dataposid,align:"RIGHT", width:0.56}
           ])
     .tableCustom(
           [
           {text:datataxinvoicetitle,align:"LEFT", width:0.5},
-          {text:datataxinvoiceid,align:"RIGHT", width:0.5}
+          {text:datataxinvoiceid,align:"RIGHT", width:0.56}
           ])
     .tableCustom(
           [
-          {text:datadateandtime,align:"LEFT", width:0.5},
-          {text:datadate+ " "+ datatime,align:"RIGHT", width:0.5}
+          {text:datadateandtime,align:"LEFT", width:0.5+spaceWidthfordatadateandtime},
+          {text:datadate+ " "+ datatime,align:"RIGHT", width:0.56}
           ])
     .align('ct')
     .style('b')
@@ -560,45 +620,45 @@ device.open(function(error){
     .text("-------------------------------------------")
     .tableCustom(
           [
-          {text:datamenutitle,align:"LEFT", width:0.5},
+          {text:datamenutitle,align:"LEFT", width:0.5+ spaceWidthfordatamenutitle},
           {text:allcost,align:"RIGHT", width:0.5}
           ])
     .text("-------------------------------------------")
     .align('lt')
     .tableCustom(
           [
-          {text:datatotaltitle,align:"LEFT", width:0.5},
-          {text:costvat,align:"RIGHT", width:0.5}
+          {text:datatotaltitle,align:"LEFT", width:0.5+ spaceWidthfordatatotaltitle},
+          {text:costvat,align:"RIGHT", width:0.56}
           ])
     .tableCustom(
           [
           {text:datavattitle,align:"LEFT", width:0.5},
-          {text:vat,align:"RIGHT", width:0.5}
+          {text:vat,align:"RIGHT", width:0.56}
           ])
     .style('b')
-    .size(1, 1.05)
+    .size(1, 0)
     .tableCustom(
           [
-          {text:dataalltotal,align:"LEFT", width:0.5},
-          {text:allcost,align:"RIGHT", width:0.5}
+          {text:dataalltotal,align:"LEFT", width:0.33+ spaceWidthfordataalltotal},
+          {text:allcost,align:"RIGHT", width:0.2}
           ])
     .align('lt')
     .style('normal')
     .size(0.5555,0.05)
     .tableCustom(
           [
-          {text:datacashtitle,align:"LEFT", width:0.5},
-          {text:cash,align:"RIGHT", width:0.5}
+          {text:datacashtitle+ ":",align:"LEFT", width:0.5+ spaceWidthfordatacashtitle},
+          {text:cash,align:"RIGHT", width:0.56}
           ])
     .tableCustom(
           [
-          {text:datacashchangetitle,align:"LEFT", width:0.5},
-          {text:cashchange,align:"RIGHT", width:0.5}
+          {text:datacashchangetitle,align:"LEFT", width:0.5+ spaceWidthfordatacashchangetitle},
+          {text:cashchange,align:"RIGHT", width:0.56}
           ])
     .tableCustom(
           [
-          {text:dataaverageperpeopletitle,align:"LEFT", width:0.5},
-          {text:cashperpeople,align:"RIGHT", width:0.5}
+          {text:dataaverageperpeopletitle,align:"LEFT", width:0.5+ spaceWidthfordataaverageperpeopletitle},
+          {text:cashperpeople,align:"RIGHT", width:0.56}
           ])
     .text("-------------------------------------------")
     .text(datacustomertitle+ " "+ datacustomerid+ " "+ datacustomertype+ " "+ datacashtitle)

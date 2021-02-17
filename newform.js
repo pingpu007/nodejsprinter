@@ -238,7 +238,7 @@ device.open(function(error){
           {text:vat,align:"RIGHT", width:0.5}
           ])
     .style('b')
-    .size(1, 1.05)
+    .size(1, 0)
     .tableCustom(
           [
           {text:dataalltotal,align:"LEFT", width:0.5},
